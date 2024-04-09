@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>INFORMATION EMPLOYEES</title>
+    <link rel="stylesheet" href="../static/css/plugin/bootstrap.min.css">
+</head>
+<body>
+<header>
+    <div class="title">
+        <h2 style="text-align: center">DISPLAY INFORMATION EMPLOYEES</h2>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Id</th>
+                <th scope="col">No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Birth Day</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Issus Date</th>
+                <th scope="col">Address</th>
+                <th scope="col">Handle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee, itemStat : ${listEmployees}">
+                <td th:text="${itemStat.index + 1}"></td>
+                <td>
+                    <img th:src="'data:image/jpeg;base64,' + ${employee.photo}" width="50" height="50"/>
+                </td>
+                <td th:text="${employee.id}"></td>
+                <td th:text="${employee.no}"></td>
+                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.dateOfBirth}"></td>
+                <td th:text="${employee.gender}"></td>
+                <td th:text="${employee.issueDate}"></td>
+                <td th:text="${employee.address}"></td>
+                <td>
+                    <button type="button" class="btn btn-danger" onclick="showDeleteId(this)"
+                            th:attr="data-employee-id=${employee.id}">DELETE
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<footer>
+
+</footer>
+<script src="../static/js/custom/index.js"></script>
+<script src="../static/js/plugin/bootstrap.bundle.js"></script>
+<script src="../static/js/plugin/bootstrap.min.js"></script>
+<script src="../static/js/plugin/bootstrap.bundle.min.js"></script>
+</body>
+</html>
